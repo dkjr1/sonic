@@ -2,7 +2,9 @@
     "name": "sonic",
     "description": "",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "pxt-rtttl": "github:pelikhan/pxt-rtttl#v0.0.10",
+        "tilemaps": "github:microsoft/pxt-tilemaps#v1.12.0"
     },
     "files": [
         "main.blocks",
@@ -10,7 +12,9 @@
         "README.md",
         "assets.json",
         "images.g.jres",
-        "images.g.ts"
+        "images.g.ts",
+        "tilemap.g.jres",
+        "tilemap.g.ts"
     ],
     "testFiles": [
         "test.ts"
