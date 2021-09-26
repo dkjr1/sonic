@@ -1,8 +1,43 @@
 {
+    "image2": {
+        "data": "hwQQABAAAAAA8P////8PAABfVVVVVfUA8FVVVVVVVQ9fVVVVVVVV9V9VVVVVVVX1X1VVVVVVVfVfVVVVVVVV9V9VVVVVVVX1X1VVVVVVVfVfVVVVVVVV9V8VVVVVVVX1XxVVVVVVVfVfFRFVVVVV9fBVVVVVVVUPAF9VVVVV9QAA8P////8PAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "jump"
+    },
     "image1": {
         "data": "hwQQABAAAAAAAAAAu8wAAAAAALC9vQwAAAAAsN3czQAAAACwXcW9DAAAu9tb1dwMALBbVVtV3AwAu1VVvVXbDABbHV1Vvd0MAFvxX1VV1QywW/9bVFVVDFtbVU1UVVUMtVvVTVRVVQsLsE1EVFW1CwAAz0S0Vb0AAAAAQAu7CwAAAACwAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
-        "displayName": "duck right"
+        "displayName": "player"
+    },
+    "image3": {
+        "data": "hwQQABAAAAAAAACwAAAAAAAAAEALuwsAAADPRLRVvQALsE1EVFW1C7Vb1U1UVVULW1tVTVRVVQywW/9bVFVVDABb8V9VVdUMAFsdXVW93QwAu1VVvVXbDACwW1VbVdwMAAC721vV3AwAAACwXcW9DAAAALDd3M0AAAAAsL29DAAAAAAAu8wAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "playerl"
+    },
+    "[)mLZC}:w{wor!yaICje": {
+        "data": "hwQQABAAAAAAAAAAAAAAdwAAAAAAAHDnAAAAAAAAd+4AAAAAAHDn7gAAAAAAd+7uAAAAAHDn7u4AAAAAd+7u7gAAAHDn7u7uAAAAd+7u7u4AAHDn7u7u7gAAd+7u7u7uAHDn7u7u7u4Ad+7u7u7u7nDn7u7u7u7ud+7u7u7u7u7n7u7u7u7u7g==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "slope"
+    },
+    "image4": {
+        "data": "hwQQABAAAAAAAAAAAMsMAAAAsAuw3csAAACwvdvd3QwAALBVvdzdywAAu1tVzd3NALBbtVXF3c0Au1VVW7XdzQBbW1vVW9XNAFu8XFVVVc27W/VLVVVVxVVb1URVVVXFu1vdRFVVVbUAsEREVVVVuwAATLRbVdULAABAC7C7uwAAALAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "duckHurt"
+    },
+    "image5": {
+        "data": "hwQQABAAAAAAALAAAAAAAAAAQAuwu7sAAABMtFtV1QsAsEREVVVVu7tb3URVVVW1VVvVRFVVVcW7W/VLVVVVxQBbvFxVVVXNAFtbW9Vb1c0Au1VVW7XdzQCwW7VVxd3NAAC7W1XN3c0AALBVvdzdywAAsL3b3d0MAACwC7DdywAAAAAAAMsMAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "duckHurt0"
+    },
+    "image7": {
+        "data": "hwQQABAAAAAAAAAAAAIAAAAAAAAgIgAAAAAAACIiAgAAAAAAIiLyDwAAAAAiIvL/AAAAACIi8v8AAAAAIiLy/wAAAAAiIvL/AAAAACIi8v8AAAAAIiLyDwAAAAAiIgIAAAv7uyIiAgAAsJu7IiICAAAA+7tVIgIAALCbu1AiAAAAC/u7AAIAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "motobugright"
+    },
+    "image6": {
+        "data": "hwQQABAAAAAAC/u7AAIAAACwm7tQIgAAAAD7u1UiAgAAsJu7IiICAAAL+7siIgIAAAAAACIiAgAAAAAAIiLyDwAAAAAiIvL/AAAAACIi8v8AAAAAIiLy/wAAAAAiIvL/AAAAACIi8v8AAAAAIiLyDwAAAAAiIgIAAAAAACAiAAAAAAAAAAIAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "motobugleft"
     },
     "*": {
         "mimeType": "image/x-mkcd-f4",

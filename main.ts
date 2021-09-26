@@ -1,8 +1,16 @@
 namespace SpriteKind {
     export const Slope = SpriteKind.create()
+    export const Motobug = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
     tiles.placeOnTile(Sensor, location)
+})
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (ThePlayer.isHittingTile(CollisionDirection.Bottom)) {
+        music.pewPew.play()
+        hasjumped = true
+        ThePlayer.vy = -110
+    }
 })
 function get_music_track (num: number) {
     return [
@@ -13,6 +21,13 @@ function get_music_track (num: number) {
     "boss:d=4,o=5,b=155:8e6,8p,16g,16p,8p,16g,16p,8p,8g,8p,16e,16p,8p,16e,16p,8p,8e,8p,16e,16p,8p,16e,16p,8p,g.,p.,2f#,2p,8e6,8p,16g,16p,8p,16g,16p,8p,8g,8p,16e,16p,8p,16e,16p,8p,8e,8p,16e,16p,8p,16e,16p,8p,g.,p.,2f#,1p,1p,8e6,8p,16g,16p,8p,16g,16p,8p,8g,8p,16e,16p,8p,16e,16p,8p,8e,8p,16e,16p,8p,16e,16p,8p,g.,p.,2f#,2p,8e6,8p,16g,16p,8p,16g,16p,8p,8g,8p,16e,16p,8p,16e,16p,8p,8e,8p,16e,16p,8p,16e,16p,8p,g.,p.,2f#"
     ][num]
 }
+function Level_init () {
+    scene.setBackgroundColor(9)
+    for (let value of tiles.getTilesByType(assets.tile`myTile0`)) {
+        motobug = sprites.create(assets.image`motobugleft`, SpriteKind.Motobug)
+        tiles.placeOnTile(motobug, value)
+    }
+}
 function get_music_speed (num: number) {
     return [
     185,
@@ -22,30 +37,17 @@ function get_music_speed (num: number) {
     140
     ][num]
 }
+let motobug: Sprite = null
+let hasjumped = false
 let Sensor: Sprite = null
-let ThePlayer = sprites.create(assets.image`duck right`, SpriteKind.Player)
-Sensor = sprites.create(img`
-    . . . . . . . . . . . . . . 7 7 
-    . . . . . . . . . . . . . 7 7 e 
-    . . . . . . . . . . . . 7 7 e e 
-    . . . . . . . . . . . 7 7 e e e 
-    . . . . . . . . . . 7 7 e e e e 
-    . . . . . . . . . 7 7 e e e e e 
-    . . . . . . . . 7 7 e e e e e e 
-    . . . . . . . 7 7 e e e e e e e 
-    . . . . . . 7 7 e e e e e e e e 
-    . . . . . 7 7 e e e e e e e e e 
-    . . . . 7 7 e e e e e e e e e e 
-    . . . 7 7 e e e e e e e e e e e 
-    . . 7 7 e e e e e e e e e e e e 
-    . 7 7 e e e e e e e e e e e e e 
-    7 7 e e e e e e e e e e e e e e 
-    7 e e e e e e e e e e e e e e e 
-    `, SpriteKind.Slope)
+let ThePlayer: Sprite = null
+ThePlayer = sprites.create(assets.image`player`, SpriteKind.Player)
+Sensor = sprites.create(assets.image`slope`, SpriteKind.Slope)
 tiles.loadMap(tiles.createMap(tilemap`level1`))
 scene.cameraFollowSprite(ThePlayer)
 ThePlayer.ay = 100
 tiles.placeOnRandomTile(ThePlayer, assets.tile`myTile1`)
+Level_init()
 forever(function () {
     if (controller.right.isPressed()) {
         ThePlayer.vx += 1
@@ -63,5 +65,11 @@ forever(function () {
     while (ThePlayer.overlapsWith(Sensor)) {
         ThePlayer.y += -1
         ThePlayer.vy = Math.constrain(ThePlayer.vy, -9223372036854776000, 0)
+        hasjumped = false
+        if (controller.A.isPressed()) {
+            music.pewPew.play()
+            hasjumped = true
+            ThePlayer.vy = -110
+        }
     }
 })
