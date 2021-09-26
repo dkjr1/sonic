@@ -1,3 +1,9 @@
+namespace SpriteKind {
+    export const Slope = SpriteKind.create()
+}
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
+    tiles.placeOnTile(Sensor, location)
+})
 function get_music_track (num: number) {
     return [
     "hillG:d=4,o=5,b=0:1p,8c7,384a6,p,8c7,b6,8c7,b6,2g.6,8a6,8e7,d7,8c7,b6,8c7,b6,1g6,384p,8c7,384a6,p,8c7,b6,8c7,b6,2g.6,8a6,8a6,f6,8a6,g6,8a6,g6,1c6,384p,8c7,384a6,p,8c7,b6,8c7,b6,2g.6,8a6,8e7,d7,8c7,b6,8c7,b6,1g6,384p,8c7,384a6,p,8c7,b6,8c7,b6,2g.6,8a6,8a6,f6,8a6,g6,8a6,g6,c6,8e6,1d.6,8c6,8d6,1e6,8c6,8c6,8e6,1d#.6,8c6,8d#6,1d6,1p,8c7,384a6,p,8c7,b6,8c7,b6,2g.6,8a6,8e7,d7,8c7,b6,8c7,b6,1g6,384p,8c7,384a6,p,8c7,b6,8c7,b6,2g.6,8a6,8a6,f6,8a6,g6,8a6,g6,1c6,384p,8c7,384a6,p,8c7,b6,8c7,b6,2g.6,8a6,8e7,d7,8c7,b6,8c7,b6,1g6,384p,8c7,384a6,p,8c7,b6,8c7,b6,2g.6,8a6,8a6,f6,8a6,g6,8a6,g6,c6,8e6,1d.6,8c6,8d6,1e6,8c6,8c6,8e6,1d#.6,8c6,8d#6,1d6",
@@ -16,11 +22,46 @@ function get_music_speed (num: number) {
     140
     ][num]
 }
-let mySprite = sprites.create(assets.image`duck right`, SpriteKind.Player)
+let Sensor: Sprite = null
+let ThePlayer = sprites.create(assets.image`duck right`, SpriteKind.Player)
+Sensor = sprites.create(img`
+    . . . . . . . . . . . . . . 7 7 
+    . . . . . . . . . . . . . 7 7 e 
+    . . . . . . . . . . . . 7 7 e e 
+    . . . . . . . . . . . 7 7 e e e 
+    . . . . . . . . . . 7 7 e e e e 
+    . . . . . . . . . 7 7 e e e e e 
+    . . . . . . . . 7 7 e e e e e e 
+    . . . . . . . 7 7 e e e e e e e 
+    . . . . . . 7 7 e e e e e e e e 
+    . . . . . 7 7 e e e e e e e e e 
+    . . . . 7 7 e e e e e e e e e e 
+    . . . 7 7 e e e e e e e e e e e 
+    . . 7 7 e e e e e e e e e e e e 
+    . 7 7 e e e e e e e e e e e e e 
+    7 7 e e e e e e e e e e e e e e 
+    7 e e e e e e e e e e e e e e e 
+    `, SpriteKind.Slope)
 tiles.loadMap(tiles.createMap(tilemap`level1`))
+scene.cameraFollowSprite(ThePlayer)
+ThePlayer.ay = 100
+tiles.placeOnRandomTile(ThePlayer, assets.tile`myTile1`)
+forever(function () {
+    if (controller.right.isPressed()) {
+        ThePlayer.vx += 1
+    } else if (controller.left.isPressed()) {
+        ThePlayer.vx += -1
+    } else if (!(controller.left.isPressed() || controller.right.isPressed())) {
+        ThePlayer.vx = ThePlayer.vx / 1.1
+    }
+    ThePlayer.vx = Math.constrain(ThePlayer.vx, -120, 120)
+})
 forever(function () {
     music.playMelody(music.convertRTTTLToMelody(get_music_track(4)), get_music_speed(4))
 })
 forever(function () {
-	
+    while (ThePlayer.overlapsWith(Sensor)) {
+        ThePlayer.y += -1
+        ThePlayer.vy = Math.constrain(ThePlayer.vy, -9223372036854776000, 0)
+    }
 })
